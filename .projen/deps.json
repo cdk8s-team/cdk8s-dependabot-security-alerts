@@ -75,11 +75,19 @@
       "type": "build"
     },
     {
+      "name": "@octokit/rest",
+      "type": "bundled"
+    },
+    {
       "name": "@actions/core",
       "type": "runtime"
     },
     {
       "name": "@actions/github",
+      "type": "runtime"
+    },
+    {
+      "name": "@octokit/rest",
       "type": "runtime"
     }
   ],

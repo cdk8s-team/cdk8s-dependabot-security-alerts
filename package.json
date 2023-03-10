@@ -1,5 +1,6 @@
 {
   "name": "cdk8s-dependabot-security-alerts",
+  "description": "CDK8s Github Action for creating issues for dependabot security alerts",
   "scripts": {
     "build": "npx projen build",
     "clobber": "npx projen clobber",
@@ -38,8 +39,12 @@
   },
   "dependencies": {
     "@actions/core": "^1.10.0",
-    "@actions/github": "^5.1.1"
+    "@actions/github": "^5.1.1",
+    "@octokit/rest": "^19.0.7"
   },
+  "bundledDependencies": [
+    "@octokit/rest"
+  ],
   "main": "lib/index.js",
   "license": "Apache-2.0",
   "version": "0.0.0",
