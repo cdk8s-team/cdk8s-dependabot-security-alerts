@@ -1,6 +1,10 @@
 {
   "name": "cdk8s-dependabot-security-alerts",
   "description": "CDK8s Github Action for creating issues for dependabot security alerts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cdk8s-team/cdk8s-dependabot-security-alerts"
+  },
   "scripts": {
     "build": "npx projen build",
     "clobber": "npx projen clobber",
@@ -17,6 +21,11 @@
     "upgrade": "npx projen upgrade",
     "watch": "npx projen watch",
     "projen": "npx projen"
+  },
+  "author": {
+    "name": "Amazon Web Services",
+    "url": "https://aws.amazon.com",
+    "organization": false
   },
   "devDependencies": {
     "@types/jest": "^29.4.0",
