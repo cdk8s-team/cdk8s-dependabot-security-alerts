@@ -1,6 +1,6 @@
 import { Cdk8sTeamTypeScriptProject } from '@cdk8s/projen-common';
 
-const pr = new Cdk8sTeamTypeScriptProject({
+const project = new Cdk8sTeamTypeScriptProject({
   name: 'cdk8s-dependabot-security-alerts',
   description: 'CDK8s Github Action for creating issues for dependabot security alerts',
   defaultReleaseBranch: 'main',
@@ -12,5 +12,5 @@ const pr = new Cdk8sTeamTypeScriptProject({
   bundledDeps: ['@octokit/rest'],
 });
 
-pr.synth();
+project.synth();
 
