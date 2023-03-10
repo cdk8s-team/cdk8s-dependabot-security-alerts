@@ -100,7 +100,10 @@
       "description": "Creates the distribution package",
       "steps": [
         {
-          "exec": "ncc build --source-map --license licenses.txt"
+          "exec": "mkdir -p dist/js"
+        },
+        {
+          "exec": "mv $(npm pack) dist/js/"
         }
       ]
     },
@@ -121,7 +124,7 @@
       "description": "Run tests",
       "steps": [
         {
-          "exec": "jest --passWithNoTests --updateSnapshot",
+          "exec": "jest --passWithNoTests --coverageProvider=v8 --updateSnapshot",
           "receiveArgs": true
         },
         {

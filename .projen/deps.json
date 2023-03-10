@@ -1,6 +1,10 @@
 {
   "dependencies": [
     {
+      "name": "@cdk8s/projen-common",
+      "type": "build"
+    },
+    {
       "name": "@types/jest",
       "type": "build"
     },
@@ -17,10 +21,6 @@
     {
       "name": "@typescript-eslint/parser",
       "version": "^5",
-      "type": "build"
-    },
-    {
-      "name": "@vercel/ncc",
       "type": "build"
     },
     {
@@ -59,10 +59,6 @@
       "type": "build"
     },
     {
-      "name": "projen-github-action-typescript",
-      "type": "build"
-    },
-    {
       "name": "ts-jest",
       "type": "build"
     },
@@ -77,14 +73,6 @@
     {
       "name": "@octokit/rest",
       "type": "bundled"
-    },
-    {
-      "name": "@actions/core",
-      "type": "runtime"
-    },
-    {
-      "name": "@actions/github",
-      "type": "runtime"
     },
     {
       "name": "@octokit/rest",
