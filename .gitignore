@@ -4,6 +4,7 @@
 !/.projen/deps.json
 !/.projen/files.json
 !/.github/workflows/pull-request-lint.yml
+!/.github/workflows/auto-approve.yml
 !/package.json
 !/LICENSE
 !/.npmignore
@@ -43,6 +44,15 @@ junit.xml
 !/tsconfig.dev.json
 !/src/
 /lib
+/dist/
 !/.eslintrc.json
-!/dist/
-!/action.yml
+!/CODE_OF_CONDUCT.md
+!/DCO
+!/git-hooks/prepare-commit-msg
+!/git-hooks/README.md
+!/git-hooks/setup.sh
+!/.github/ISSUE_TEMPLATE/config.yml
+!/.github/ISSUE_TEMPLATE/bug.md
+!/.github/ISSUE_TEMPLATE/feature-request.md
+!/SECURITY.md
+!/.github/workflows/triage.yml
