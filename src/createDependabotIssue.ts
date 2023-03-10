@@ -9,7 +9,7 @@ const repository = getRepositoryName();
 const client = createOctokitClient();
 
 /**
- * Runs as part of Dependabot Security Notification workflow.
+ * Runs as part of Dependabot Security Alerts workflow.
  * This creates an issue for any dependabot security alerts that github creates for the repository.
  */
 export async function run() {
