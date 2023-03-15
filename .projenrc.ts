@@ -7,10 +7,18 @@ const project = new Cdk8sTeamTypeScriptProject({
   minNodeVersion: '14.18.0',
   projenrcTs: true,
   release: false,
-  devDeps: ['@cdk8s/projen-common'],
+  devDeps: [
+    '@cdk8s/projen-common',
+    '@vercel/ncc',
+  ],
   deps: ['@octokit/rest'],
   bundledDeps: ['@octokit/rest'],
 });
+
+project.packageTask.reset('ncc build --source-map --license licenses.txt');
+project.package.addField('main', 'lib/index.js');
+project.addGitIgnore('!/dist/');
+project.annotateGenerated('/dist/**');
 
 project.synth();
 

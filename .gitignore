@@ -44,7 +44,6 @@ junit.xml
 !/tsconfig.dev.json
 !/src/
 /lib
-/dist/
 !/.eslintrc.json
 !/CODE_OF_CONDUCT.md
 !/DCO
@@ -56,3 +55,4 @@ junit.xml
 !/.github/ISSUE_TEMPLATE/feature-request.md
 !/SECURITY.md
 !/.github/workflows/triage.yml
+!/dist/

@@ -21,6 +21,7 @@
 /.projen/tasks.json linguist-generated
 /CODE_OF_CONDUCT.md linguist-generated
 /DCO linguist-generated
+/dist/** linguist-generated
 /git-hooks/prepare-commit-msg linguist-generated
 /git-hooks/README.md linguist-generated
 /git-hooks/setup.sh linguist-generated
