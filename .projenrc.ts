@@ -1,8 +1,8 @@
-import { GitHubActionTypeScriptProject } from "projen-github-action-typescript";
+import { GitHubActionTypeScriptProject } from 'projen-github-action-typescript';
 const project = new GitHubActionTypeScriptProject({
-  defaultReleaseBranch: "main",
-  devDeps: ["projen-github-action-typescript"],
-  name: "cdk8s-dependabot-security-alerts",
+  defaultReleaseBranch: 'main',
+  devDeps: ['projen-github-action-typescript'],
+  name: 'cdk8s-dependabot-security-alerts',
   projenrcTs: true,
   release: false,
 
