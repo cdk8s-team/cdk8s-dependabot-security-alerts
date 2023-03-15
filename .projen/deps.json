@@ -24,6 +24,10 @@
       "type": "build"
     },
     {
+      "name": "@vercel/ncc",
+      "type": "build"
+    },
+    {
       "name": "eslint-import-resolver-node",
       "type": "build"
     },

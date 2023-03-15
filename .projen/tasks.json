@@ -118,10 +118,7 @@
       "description": "Creates the distribution package",
       "steps": [
         {
-          "exec": "mkdir -p dist/js"
-        },
-        {
-          "exec": "mv $(npm pack) dist/js/"
+          "exec": "ncc build --source-map --license licenses.txt"
         }
       ]
     },
