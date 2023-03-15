@@ -409,8 +409,16 @@ describe('security workflow script', () => {
   });
 });
 
+/**
+ * Mock pagination results for listing issues and dependabot alerts
+ * @param listIssuesOutput The output to set for list issues for the repository
+ * @param listDependabotAlertsOutput The output to set for list of dependabot alerts for the repository
+ */
 function mockPagination(listIssuesOutput: listIssuesType[] = listIssuesDefaultVal,
   listDependabotAlertsOutput: listDependabotAlertsType[] = listDepAlertDefaultVal) {
+
+  // The first mock value is for list issues request and
+  // second mock value is for list dependabot alerts request
   mockPaginate.mockResolvedValueOnce(listIssuesOutput)
     .mockResolvedValueOnce(listDependabotAlertsOutput);
 }
