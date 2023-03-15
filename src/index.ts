@@ -1,1 +1,1 @@
-export * from './createDependabotIssue';
+export * from './create-dependabot-issue';

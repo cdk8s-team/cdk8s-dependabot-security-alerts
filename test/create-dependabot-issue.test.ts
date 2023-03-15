@@ -36,10 +36,11 @@ const mockListDependabotAlerts = jest.fn().mockResolvedValue({
       severity: 'high',
       summary: 'Some Security Issue',
     },
+    created_at: subtractDays(5).toISOString(),
   }],
 });
 
-import { createOctokitClient, getRepositoryName, getRepositoryOwner, run } from '../src/createDependabotIssue';
+import { createOctokitClient, getRepositoryName, getRepositoryOwner, isTwoDaysOld, run } from '../src/create-dependabot-issue';
 
 jest.mock('@octokit/rest', () => ({
   Octokit: jest.fn().mockImplementation(() => ({
@@ -138,11 +139,21 @@ describe('security workflow script', () => {
           number: 5,
           html_url: 'someUrl',
           state: 'dismissed',
+          security_advisory: {
+            severity: 'high',
+            summary: 'Some Security Issue',
+          },
+          created_at: subtractDays(5).toISOString(),
         },
         {
           number: 6,
           html_url: 'anotherUrl',
           state: 'fixed',
+          security_advisory: {
+            severity: 'high',
+            summary: 'Another Security Issue',
+          },
+          created_at: subtractDays(5).toISOString(),
         },
       ],
     });
@@ -191,6 +202,70 @@ describe('security workflow script', () => {
     expect(mockCreateIssue).not.toHaveBeenCalled();
   });
 
+  test('does not get incidents newer than two days', async () => {
+    mockListDependabotAlerts.mockResolvedValueOnce({
+      data: [
+        {
+          number: issueNumber,
+          html_url: issueURL,
+          state: 'open',
+          security_advisory: {
+            severity: 'high',
+            summary: 'Some Security Issue',
+          },
+          created_at: subtractDays(5).toISOString(),
+        },
+        {
+          number: 6,
+          html_url: 'anotherUrl',
+          state: 'open',
+          security_advisory: {
+            severity: 'high',
+            summary: 'Another Security Issue',
+          },
+          created_at: subtractDays(1).toISOString(),
+        },
+        {
+          number: 7,
+          html_url: 'randomUrl',
+          state: 'open',
+          security_advisory: {
+            severity: 'high',
+            summary: 'Random Security Issue',
+          },
+          created_at: subtractDays(0).toISOString(),
+        },
+      ],
+    });
+
+    await run();
+
+    expect(mockListIssues).toHaveBeenCalled();
+    expect(mockListIssues).toHaveBeenCalledWith({
+      owner: ownerName,
+      repo: repoName,
+    });
+
+    expect(mockListDependabotAlerts).toHaveBeenCalled();
+    expect(mockListDependabotAlerts).toHaveBeenCalledWith({
+      owner: ownerName,
+      repo: repoName,
+    });
+
+    expect(mockCreateIssue).toHaveBeenCalledTimes(1);
+    expect(mockCreateIssue).toHaveBeenCalledWith({
+      owner: ownerName,
+      repo: repoName,
+      title: issueTitle,
+      body: issueBody,
+      labels: [
+        DEPENDABOT_SECURITY_INCIDENT_LABEL,
+        P0_ISSUE_LABEL,
+        TRIAGE_LABEL,
+      ],
+    });
+  });
+
   test('throws if GITHUB_TOKEN is not present', () => {
     delete process.env.GITHUB_TOKEN;
 
@@ -209,6 +284,27 @@ describe('security workflow script', () => {
     expect(() => getRepositoryName()).toThrow('REPO_NAME must be set');
   });
 
+  test('isTwoDaysOld is true for date older than two days', () => {
+    const creationDate = subtractDays(4).toISOString();
+    const result = isTwoDaysOld(creationDate);
+
+    expect(result).toBeTruthy();
+  });
+
+  test('isTwoDaysOld is true for date equal to two days', () => {
+    const creationDate = subtractDays(2).toISOString();
+    const result = isTwoDaysOld(creationDate);
+
+    expect(result).toBeTruthy();
+  });
+
+  test('isTwoDaysOld is false for date newer than two days', () => {
+    const creationDate = subtractDays(1).toISOString();
+    const result = isTwoDaysOld(creationDate);
+
+    expect(result).toBeFalsy();
+  });
+
   afterEach(() => {
     jest.resetModules();
     process.env = {
@@ -219,3 +315,15 @@ describe('security workflow script', () => {
     };
   });
 });
+
+
+/**
+ * Add number of days to current date
+ * @param numberOfDays Number of days
+ * @returns The new date with added days
+ */
+function subtractDays(numberOfDays: number, date: Date = new Date()): Date {
+  const newDate = new Date(date.setDate(date.getDate() - numberOfDays));
+
+  return newDate;
+}

@@ -21,7 +21,9 @@ export async function run() {
   // This also returns pull requests, so making sure we are only considering issues
   // https://docs.github.com/en/rest/issues/issues?apiVersion=2022-11-28#list-repository-issues
   const existingDependabotSecurityIssues = existingIssues.data.filter((issue) =>
-    issue.labels.includes(DEPENDABOT_SECURITY_INCIDENT_LABEL) && !('pull_request' in issue) && issue.state === 'open',
+    issue.labels.includes(DEPENDABOT_SECURITY_INCIDENT_LABEL) &&
+    !issue.pull_request &&
+    issue.state === 'open',
   );
 
   const dependabotSecurityIncidents = await client.dependabot.listAlertsForRepo({
@@ -29,7 +31,10 @@ export async function run() {
     repo: repository,
   });
 
-  const openSecurityIncidents = dependabotSecurityIncidents.data.filter((incident) => incident.state === 'open');
+  const openSecurityIncidents = dependabotSecurityIncidents.data.filter((incident) =>
+    incident.state === 'open' &&
+    isTwoDaysOld(incident.created_at),
+  );
 
   for (const incident of openSecurityIncidents) {
     const severity = incident.security_advisory.severity.toUpperCase();
@@ -108,6 +113,22 @@ export function getRepositoryName(): string {
   return repositoryName.split('/')[1];
 }
 
+/**
+ * Checks if a given date is two or more days older than current date
+ * @param date Date
+ * @returns Result of comparison
+ */
+export function isTwoDaysOld(date: string): boolean {
+  const currentDate = new Date().getTime();
+  const creationDate = new Date(date).getTime();
+
+  const dateDiff = Math.abs(currentDate - creationDate);
+  const dayDiff = Math.ceil(dateDiff/(24 * 60 * 60 * 1000));
+  const result = dayDiff >= 2;
+
+  return result;
+}
+
 run().catch((err) => {
-  throw new Error(err);
+  throw err;
 });
