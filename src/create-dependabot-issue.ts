@@ -1,6 +1,6 @@
 import { Octokit } from '@octokit/rest';
 
-const DEPENDABOT_SECURITY_INCIDENT_LABEL = 'dependabot-security-finding';
+const DEPENDABOT_SECURITY_ALERT_LABEL = 'dependabot-security-finding';
 const P0_ISSUE_LABEL = 'priority/p0';
 const TRIAGE_LABEL = 'needs-triage';
 
@@ -13,39 +13,41 @@ const client = createOctokitClient();
  * This creates an issue for any dependabot security alerts that github creates for the repository.
  */
 export async function run() {
-  const existingIssues = await client.issues.listForRepo({
+  const existingIssues = await client.paginate(client.rest.issues.listForRepo, {
     owner: owner,
     repo: repository,
+    per_page: 100,
   });
 
   // This also returns pull requests, so making sure we are only considering issues
   // https://docs.github.com/en/rest/issues/issues?apiVersion=2022-11-28#list-repository-issues
-  const existingDependabotSecurityIssues = existingIssues.data.filter((issue) =>
-    issue.labels.includes(DEPENDABOT_SECURITY_INCIDENT_LABEL) &&
+  const existingDependabotSecurityIssues = existingIssues.filter((issue) =>
+    issue.labels.includes(DEPENDABOT_SECURITY_ALERT_LABEL) &&
     !issue.pull_request &&
     issue.state === 'open',
   );
 
-  const dependabotSecurityIncidents = await client.dependabot.listAlertsForRepo({
+  const dependabotSecurityAlerts = await client.paginate(client.rest.dependabot.listAlertsForRepo, {
     owner: owner,
     repo: repository,
+    per_page: 100,
   });
 
-  const openSecurityIncidents = dependabotSecurityIncidents.data.filter((incident) =>
-    incident.state === 'open' &&
-    isTwoDaysOld(incident.created_at),
+  const openSecurityAlerts = dependabotSecurityAlerts.filter((alert) =>
+    alert.state === 'open' &&
+    isTwoDaysOld(alert.created_at),
   );
 
-  for (const incident of openSecurityIncidents) {
-    const severity = incident.security_advisory.severity.toUpperCase();
-    const summary = incident.security_advisory.summary;
+  for (const alert of openSecurityAlerts) {
+    const severity = alert.security_advisory.severity.toUpperCase();
+    const summary = alert.security_advisory.summary;
 
     const issueTitle = `[${severity}] ${summary}`;
 
     const issueExists = existingDependabotSecurityIssues.find((issue) => issue.title === issueTitle);
 
     if (issueExists === undefined) {
-      await createDependabotSecurityIssue(issueTitle, incident.html_url);
+      await createDependabotSecurityIssue(issueTitle, alert.html_url);
     }
   }
 }
@@ -53,16 +55,16 @@ export async function run() {
 /**
  * Helper method to create a dependabot security alert issue.
  * @param issueTitle The title of the issue to create.
- * @param incidentUrl The URL to the dependabot security alert.
+ * @param alertUrl The URL to the dependabot security alert.
  */
-async function createDependabotSecurityIssue(issueTitle: string, incidentUrl: string) {
+async function createDependabotSecurityIssue(issueTitle: string, alertUrl: string) {
   await client.issues.create({
     owner: owner,
     repo: repository,
     title: issueTitle,
-    body: `Github reported a new dependabot security incident at: ${incidentUrl}`,
+    body: `Github reported a new dependabot security alert at: ${alertUrl}`,
     labels: [
-      DEPENDABOT_SECURITY_INCIDENT_LABEL,
+      DEPENDABOT_SECURITY_ALERT_LABEL,
       P0_ISSUE_LABEL,
       TRIAGE_LABEL,
     ],
@@ -123,7 +125,7 @@ export function isTwoDaysOld(date: string): boolean {
   const creationDate = new Date(date).getTime();
 
   const dateDiff = Math.abs(currentDate - creationDate);
-  const dayDiff = Math.ceil(dateDiff/(24 * 60 * 60 * 1000));
+  const dayDiff = Math.floor(dateDiff/(24 * 60 * 60 * 1000));
   const result = dayDiff >= 2;
 
   return result;
