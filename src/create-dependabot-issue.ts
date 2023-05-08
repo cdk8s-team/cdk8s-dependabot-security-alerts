@@ -25,17 +25,13 @@ export async function run() {
     // Labels could either be a string or an object
     // https://docs.github.com/en/rest/issues/labels?apiVersion=2022-11-28#list-labels-for-a-repository
     function hasSecurityLabel() {
-      if (typeof issue.labels === 'string') {
-        return issue.labels === DEPENDABOT_SECURITY_ALERT_LABEL;
-      } else {
-        return issue.labels.filter((label) => {
-          if (typeof label === 'string') {
-            return label === DEPENDABOT_SECURITY_ALERT_LABEL;
-          } else {
-            return label.name === DEPENDABOT_SECURITY_ALERT_LABEL;
-          }
-        });
-      }
+      return issue.labels.filter((label) => {
+        if (typeof label === 'string') {
+          return label === DEPENDABOT_SECURITY_ALERT_LABEL;
+        } else {
+          return label.name === DEPENDABOT_SECURITY_ALERT_LABEL;
+        }
+      });
     };
 
     return hasSecurityLabel() && !issue.pull_request && issue.state === 'open';
