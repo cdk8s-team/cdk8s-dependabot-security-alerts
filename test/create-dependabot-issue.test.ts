@@ -24,8 +24,18 @@ const listDepAlertDefaultVal = [{
   created_at: subtractDays(5).toISOString(),
 }];
 
+type labelType = {
+  id: number;
+  node_id: string;
+  url: string;
+  name: string;
+  description: string;
+  color: string;
+  default: boolean;
+}
+
 type listIssuesType = {
-  labels: string[];
+  labels: string[] | labelType[];
   state: string;
 };
 
@@ -152,6 +162,50 @@ describe('security workflow script', () => {
     // GIVEN
     const alreadyExistingIssue = [{
       labels: [DEPENDABOT_SECURITY_ALERT_LABEL],
+      title: issueTitle,
+      state: 'open',
+    }];
+    mockPagination(alreadyExistingIssue, listDepAlertDefaultVal);
+
+    // WHEN
+    await run();
+
+    // THEN
+    expect(mockPaginate).toHaveBeenCalledTimes(2);
+    expect(mockPaginate).toHaveBeenNthCalledWith(
+      1,
+      mockListIssues,
+      {
+        owner: 'cdk8s-mock-owner',
+        repo: 'cdk8s-mock-repo',
+        per_page: 100,
+      },
+    );
+    expect(mockPaginate).toHaveBeenNthCalledWith(
+      2,
+      mockListDependabotAlerts,
+      {
+        owner: 'cdk8s-mock-owner',
+        repo: 'cdk8s-mock-repo',
+        per_page: 100,
+      },
+    );
+
+    expect(mockCreateIssue).not.toHaveBeenCalled();
+  });
+
+  test('does not create issue WHEN issue already exists and typeof labels is object', async () => {
+    // GIVEN
+    const alreadyExistingIssue = [{
+      labels: [{
+        id: 12,
+        node_id: 'some-node-id',
+        url: 'some-url',
+        name: DEPENDABOT_SECURITY_ALERT_LABEL,
+        description: 'some-description',
+        color: 'some-color',
+        default: true,
+      }],
       title: issueTitle,
       state: 'open',
     }];

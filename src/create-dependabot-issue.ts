@@ -21,10 +21,21 @@ export async function run() {
 
   // This also returns pull requests, so making sure we are only considering issues
   // https://docs.github.com/en/rest/issues/issues?apiVersion=2022-11-28#list-repository-issues
-  const existingDependabotSecurityIssues = existingIssues.filter((issue) =>
-    issue.labels.includes(DEPENDABOT_SECURITY_ALERT_LABEL) &&
-    !issue.pull_request &&
-    issue.state === 'open',
+  const existingDependabotSecurityIssues = existingIssues.filter((issue) => {
+    // Labels could either be a string or an object
+    // https://docs.github.com/en/rest/issues/labels?apiVersion=2022-11-28#list-labels-for-a-repository
+    function hasSecurityLabel() {
+      return issue.labels.filter((label) => {
+        if (typeof label === 'string') {
+          return label === DEPENDABOT_SECURITY_ALERT_LABEL;
+        } else {
+          return label.name === DEPENDABOT_SECURITY_ALERT_LABEL;
+        }
+      });
+    };
+
+    return hasSecurityLabel() && !issue.pull_request && issue.state === 'open';
+  },
   );
 
   const dependabotSecurityAlerts = await client.paginate(client.rest.dependabot.listAlertsForRepo, {
