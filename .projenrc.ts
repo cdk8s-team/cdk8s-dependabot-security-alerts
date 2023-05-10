@@ -20,5 +20,10 @@ project.package.addField('main', 'lib/index.js');
 project.addGitIgnore('!/dist/');
 project.annotateGenerated('/dist/**');
 
+project.package.addPackageResolutions(
+  '@octokit/types@9.0.0',
+  '@octokit/openapi-types@16.0.0',
+);
+
 project.synth();
 
