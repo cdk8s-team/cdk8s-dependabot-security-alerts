@@ -10,7 +10,7 @@
     },
     {
       "name": "@types/node",
-      "version": "^14",
+      "version": "^18",
       "type": "build"
     },
     {
@@ -77,16 +77,6 @@
     {
       "name": "@octokit/rest",
       "type": "bundled"
-    },
-    {
-      "name": "@octokit/openapi-types",
-      "version": "16.0.0",
-      "type": "override"
-    },
-    {
-      "name": "@octokit/types",
-      "version": "9.0.0",
-      "type": "override"
     },
     {
       "name": "@octokit/rest",

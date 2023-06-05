@@ -4,7 +4,7 @@ const project = new Cdk8sTeamTypeScriptProject({
   name: 'cdk8s-dependabot-security-alerts',
   description: 'CDK8s Github Action for creating issues for dependabot security alerts',
   defaultReleaseBranch: 'main',
-  minNodeVersion: '14.18.0',
+  minNodeVersion: '18.12.0',
   projenrcTs: true,
   release: false,
   devDeps: [
@@ -19,11 +19,6 @@ project.packageTask.reset('ncc build --source-map --license licenses.txt');
 project.package.addField('main', 'lib/index.js');
 project.addGitIgnore('!/dist/');
 project.annotateGenerated('/dist/**');
-
-project.package.addPackageResolutions(
-  '@octokit/types@9.0.0',
-  '@octokit/openapi-types@16.0.0',
-);
 
 project.synth();
 
