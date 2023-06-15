@@ -60,9 +60,7 @@ process.env = {
   GITHUB_TOKEN: token,
 };
 
-const mockListIssues = jest.fn();
 const mockCreateIssue = jest.fn();
-const mockListDependabotAlerts = jest.fn();
 const mockPaginate = jest.fn().mockResolvedValue([]);
 
 import { createOctokitClient, getRepositoryName, getRepositoryOwner, isTwoDaysOld, run } from '../src/create-dependabot-issue';
@@ -70,14 +68,6 @@ import { createOctokitClient, getRepositoryName, getRepositoryOwner, isTwoDaysOl
 jest.mock('@octokit/rest', () => ({
   Octokit: jest.fn().mockImplementation(() => ({
     paginate: mockPaginate,
-    rest: {
-      issues: {
-        listForRepo: mockListIssues,
-      },
-      dependabot: {
-        listAlertsForRepo: mockListDependabotAlerts,
-      },
-    },
     issues: {
       create: mockCreateIssue,
     },
@@ -96,7 +86,7 @@ describe('security workflow script', () => {
     expect(mockPaginate).toHaveBeenCalledTimes(2);
     expect(mockPaginate).toHaveBeenNthCalledWith(
       1,
-      mockListIssues,
+      'GET /repos/{owner}/{repo}/issues',
       {
         owner: 'cdk8s-mock-owner',
         repo: 'cdk8s-mock-repo',
@@ -105,7 +95,7 @@ describe('security workflow script', () => {
     );
     expect(mockPaginate).toHaveBeenNthCalledWith(
       2,
-      mockListDependabotAlerts,
+      'GET /repos/{owner}/{repo}/dependabot/alerts',
       {
         owner: 'cdk8s-mock-owner',
         repo: 'cdk8s-mock-repo',
@@ -138,7 +128,7 @@ describe('security workflow script', () => {
     expect(mockPaginate).toHaveBeenCalledTimes(2);
     expect(mockPaginate).toHaveBeenNthCalledWith(
       1,
-      mockListIssues,
+      'GET /repos/{owner}/{repo}/issues',
       {
         owner: 'cdk8s-mock-owner',
         repo: 'cdk8s-mock-repo',
@@ -147,7 +137,7 @@ describe('security workflow script', () => {
     );
     expect(mockPaginate).toHaveBeenNthCalledWith(
       2,
-      mockListDependabotAlerts,
+      'GET /repos/{owner}/{repo}/dependabot/alerts',
       {
         owner: 'cdk8s-mock-owner',
         repo: 'cdk8s-mock-repo',
@@ -174,7 +164,7 @@ describe('security workflow script', () => {
     expect(mockPaginate).toHaveBeenCalledTimes(2);
     expect(mockPaginate).toHaveBeenNthCalledWith(
       1,
-      mockListIssues,
+      'GET /repos/{owner}/{repo}/issues',
       {
         owner: 'cdk8s-mock-owner',
         repo: 'cdk8s-mock-repo',
@@ -183,7 +173,7 @@ describe('security workflow script', () => {
     );
     expect(mockPaginate).toHaveBeenNthCalledWith(
       2,
-      mockListDependabotAlerts,
+      'GET /repos/{owner}/{repo}/dependabot/alerts',
       {
         owner: 'cdk8s-mock-owner',
         repo: 'cdk8s-mock-repo',
@@ -218,7 +208,7 @@ describe('security workflow script', () => {
     expect(mockPaginate).toHaveBeenCalledTimes(2);
     expect(mockPaginate).toHaveBeenNthCalledWith(
       1,
-      mockListIssues,
+      'GET /repos/{owner}/{repo}/issues',
       {
         owner: 'cdk8s-mock-owner',
         repo: 'cdk8s-mock-repo',
@@ -227,7 +217,7 @@ describe('security workflow script', () => {
     );
     expect(mockPaginate).toHaveBeenNthCalledWith(
       2,
-      mockListDependabotAlerts,
+      'GET /repos/{owner}/{repo}/dependabot/alerts',
       {
         owner: 'cdk8s-mock-owner',
         repo: 'cdk8s-mock-repo',
@@ -271,7 +261,7 @@ describe('security workflow script', () => {
     expect(mockPaginate).toHaveBeenCalledTimes(2);
     expect(mockPaginate).toHaveBeenNthCalledWith(
       1,
-      mockListIssues,
+      'GET /repos/{owner}/{repo}/issues',
       {
         owner: 'cdk8s-mock-owner',
         repo: 'cdk8s-mock-repo',
@@ -280,7 +270,7 @@ describe('security workflow script', () => {
     );
     expect(mockPaginate).toHaveBeenNthCalledWith(
       2,
-      mockListDependabotAlerts,
+      'GET /repos/{owner}/{repo}/dependabot/alerts',
       {
         owner: 'cdk8s-mock-owner',
         repo: 'cdk8s-mock-repo',
@@ -308,7 +298,7 @@ describe('security workflow script', () => {
     expect(mockPaginate).toHaveBeenCalledTimes(2);
     expect(mockPaginate).toHaveBeenNthCalledWith(
       1,
-      mockListIssues,
+      'GET /repos/{owner}/{repo}/issues',
       {
         owner: 'cdk8s-mock-owner',
         repo: 'cdk8s-mock-repo',
@@ -317,7 +307,7 @@ describe('security workflow script', () => {
     );
     expect(mockPaginate).toHaveBeenNthCalledWith(
       2,
-      mockListDependabotAlerts,
+      'GET /repos/{owner}/{repo}/dependabot/alerts',
       {
         owner: 'cdk8s-mock-owner',
         repo: 'cdk8s-mock-repo',
@@ -382,7 +372,7 @@ describe('security workflow script', () => {
     expect(mockPaginate).toHaveBeenCalledTimes(2);
     expect(mockPaginate).toHaveBeenNthCalledWith(
       1,
-      mockListIssues,
+      'GET /repos/{owner}/{repo}/issues',
       {
         owner: 'cdk8s-mock-owner',
         repo: 'cdk8s-mock-repo',
@@ -391,7 +381,7 @@ describe('security workflow script', () => {
     );
     expect(mockPaginate).toHaveBeenNthCalledWith(
       2,
-      mockListDependabotAlerts,
+      'GET /repos/{owner}/{repo}/dependabot/alerts',
       {
         owner: 'cdk8s-mock-owner',
         repo: 'cdk8s-mock-repo',

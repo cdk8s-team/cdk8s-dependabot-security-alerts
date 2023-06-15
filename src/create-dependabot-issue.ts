@@ -13,7 +13,7 @@ const client = createOctokitClient();
  * This creates an issue for any dependabot security alerts that github creates for the repository.
  */
 export async function run() {
-  const existingIssues = await client.paginate(client.rest.issues.listForRepo, {
+  const existingIssues = await client.paginate('GET /repos/{owner}/{repo}/issues', {
     owner: owner,
     repo: repository,
     per_page: 100,
@@ -38,7 +38,7 @@ export async function run() {
   },
   );
 
-  const dependabotSecurityAlerts = await client.paginate(client.rest.dependabot.listAlertsForRepo, {
+  const dependabotSecurityAlerts = await client.paginate('GET /repos/{owner}/{repo}/dependabot/alerts', {
     owner: owner,
     repo: repository,
     per_page: 100,
