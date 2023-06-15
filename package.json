@@ -52,10 +52,6 @@
   "bundledDependencies": [
     "@octokit/rest"
   ],
-  "resolutions": {
-    "@octokit/openapi-types": "16.0.0",
-    "@octokit/types": "9.0.0"
-  },
   "engines": {
     "node": ">= 14.18.0"
   },

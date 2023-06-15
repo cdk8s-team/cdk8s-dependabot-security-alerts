@@ -13,7 +13,7 @@ const client = createOctokitClient();
  * This creates an issue for any dependabot security alerts that github creates for the repository.
  */
 export async function run() {
-  const existingIssues = await client.paginate(client.rest.issues.listForRepo, {
+  const existingIssues = await client.paginate('GET /repos/{owner}/{repo}/issues', {
     owner: owner,
     repo: repository,
     per_page: 100,
@@ -25,7 +25,7 @@ export async function run() {
     // Labels could either be a string or an object
     // https://docs.github.com/en/rest/issues/labels?apiVersion=2022-11-28#list-labels-for-a-repository
     function hasSecurityLabel() {
-      return issue.labels.filter((label) => {
+      return issue.labels.filter((label: any) => {
         if (typeof label === 'string') {
           return label === DEPENDABOT_SECURITY_ALERT_LABEL;
         } else {
@@ -38,7 +38,7 @@ export async function run() {
   },
   );
 
-  const dependabotSecurityAlerts = await client.paginate(client.rest.dependabot.listAlertsForRepo, {
+  const dependabotSecurityAlerts = await client.paginate('GET /repos/{owner}/{repo}/dependabot/alerts', {
     owner: owner,
     repo: repository,
     per_page: 100,
