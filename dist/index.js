@@ -284,7 +284,7 @@ var import_graphql = __nccwpck_require__(8467);
 var import_auth_token = __nccwpck_require__(334);
 
 // pkg/dist-src/version.js
-var VERSION = "4.2.1";
+var VERSION = "4.2.4";
 
 // pkg/dist-src/index.js
 var Octokit = class {
@@ -3483,7 +3483,7 @@ var import_endpoint = __nccwpck_require__(9440);
 var import_universal_user_agent = __nccwpck_require__(5030);
 
 // pkg/dist-src/version.js
-var VERSION = "6.2.6";
+var VERSION = "6.2.8";
 
 // pkg/dist-src/fetch-wrapper.js
 var import_is_plain_object = __nccwpck_require__(3287);
@@ -3688,7 +3688,7 @@ var import_plugin_paginate_rest = __nccwpck_require__(4193);
 var import_plugin_rest_endpoint_methods = __nccwpck_require__(3044);
 
 // pkg/dist-src/version.js
-var VERSION = "19.0.11";
+var VERSION = "19.0.13";
 
 // pkg/dist-src/index.js
 var Octokit = import_core.Octokit.plugin(
