@@ -6,6 +6,7 @@ const project = new Cdk8sTeamTypeScriptProject({
   defaultReleaseBranch: 'main',
   minNodeVersion: '14.18.0',
   projenrcTs: true,
+  workflowNodeVersion: '16.20.0',
   release: false,
   devDeps: [
     '@cdk8s/projen-common',

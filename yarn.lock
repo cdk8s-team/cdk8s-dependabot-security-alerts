@@ -4402,10 +4402,10 @@ progress@^2.0.3:
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
-projen@^0.71.101:
-  version "0.71.101"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.71.101.tgz#f6afb2d9e8114bdf927e2718d888d0f592c40ebc"
-  integrity sha512-auUdvNeaxvYxTBZMuGMtzcZNwiK/+S0Hlbj94vbGWE8AMTcFfdOhaoZKsRLNUtk3P7hi4PNbfn/7qiUZmx6JOQ==
+projen@^0.71.124:
+  version "0.71.124"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.71.124.tgz#94823d7af5842f0ca6692f9f2464d90edfd525d0"
+  integrity sha512-XSS+A46RyP140kBfIewMO8Qym2g2o5/F+ntIQZ3kSsGe2vTEvUk63LauqkMzIv2StTwCv/6veRjIriXmdEwsMg==
   dependencies:
     "@iarna/toml" "^2.2.5"
     case "^1.6.3"
@@ -4415,7 +4415,7 @@ projen@^0.71.101:
     fast-json-patch "^3.1.1"
     glob "^8"
     ini "^2.0.0"
-    semver "^7.5.2"
+    semver "^7.5.3"
     shx "^0.3.4"
     xmlbuilder2 "^3.1.1"
     yaml "^2.2.2"
@@ -4710,13 +4710,6 @@ semver@^7.0.0, semver@^7.1.1, semver@^7.3.5, semver@^7.3.7, semver@^7.4.0, semve
   version "7.5.3"
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.5.3.tgz#161ce8c2c6b4b3bdca6caadc9fa3317a4c4fe88e"
   integrity sha512-QBlUtyVk/5EeHbi7X0fw6liDZc7BBmEaSYn01fMU1OUYbf6GPsbTtd8WmnqbI20SeycoHSeiybkE/q1Q+qlThQ==
-  dependencies:
-    lru-cache "^6.0.0"
-
-semver@^7.5.2:
-  version "7.5.2"
-  resolved "https://registry.yarnpkg.com/semver/-/semver-7.5.2.tgz#5b851e66d1be07c1cdaf37dfc856f543325a2beb"
-  integrity sha512-SoftuTROv/cRjCze/scjGyiDtcUyxw1rgYQSZY7XTmtR5hX+dm76iDbTH8TkLPHCQmlbQVSSbNZCPM2hb0knnQ==
   dependencies:
     lru-cache "^6.0.0"
 
