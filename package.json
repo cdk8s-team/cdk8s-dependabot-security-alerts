@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@cdk8s/projen-common": "^0.0.401",
-    "@types/jest": "^29.5.2",
+    "@types/jest": "^29.5.3",
     "@types/node": "^14",
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
