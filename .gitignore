@@ -60,4 +60,5 @@ junit.xml
 !/.github/workflows/stale.yml
 !/.github/workflows/upgrade-configuration.yml
 !/.github/workflows/upgrade-dev-dependencies.yml
+!/.github/workflows/upgrade-compiler-dependencies.yml
 !/dist/
