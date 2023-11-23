@@ -164,10 +164,7 @@
       },
       "steps": [
         {
-          "exec": "yarn upgrade npm-check-updates"
-        },
-        {
-          "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev --filter=typescript"
+          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=typescript"
         },
         {
           "exec": "yarn install --check-files"
@@ -191,10 +188,7 @@
       },
       "steps": [
         {
-          "exec": "yarn upgrade npm-check-updates"
-        },
-        {
-          "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common"
+          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common"
         },
         {
           "exec": "yarn install --check-files"
@@ -218,16 +212,13 @@
       },
       "steps": [
         {
-          "exec": "yarn upgrade npm-check-updates"
-        },
-        {
-          "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev --filter=@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,@vercel/ncc,constructs,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,npm-check-updates,ts-jest,ts-node,@octokit/rest"
+          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,@vercel/ncc,constructs,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,ts-jest,ts-node,@octokit/rest"
         },
         {
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser @vercel/ncc constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit npm-check-updates ts-jest ts-node @octokit/rest"
+          "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser @vercel/ncc constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit ts-jest ts-node @octokit/rest"
         },
         {
           "exec": "npx projen"
@@ -245,10 +236,7 @@
       },
       "steps": [
         {
-          "exec": "yarn upgrade npm-check-updates"
-        },
-        {
-          "exec": "npm-check-updates --upgrade --target=minor --peer --dep=peer,prod,optional --filter=@octokit/rest"
+          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=peer,prod,optional --filter=@octokit/rest"
         },
         {
           "exec": "yarn install --check-files"
