@@ -236,7 +236,7 @@
       },
       "steps": [
         {
-          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=peer,prod,optional --filter=@octokit/rest"
+          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=prod,optional --filter=@octokit/rest"
         },
         {
           "exec": "yarn install --check-files"
