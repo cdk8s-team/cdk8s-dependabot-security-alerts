@@ -3301,10 +3301,10 @@ pretty-format@^29.0.0, pretty-format@^29.7.0:
     ansi-styles "^5.0.0"
     react-is "^18.0.0"
 
-projen@^0.79.7:
-  version "0.79.7"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.79.7.tgz#b679640617d032de7a03677168c2605c9abafc36"
-  integrity sha512-G0IBXW72YQXjLZM+E0Eqkw0dyIienPdue5SSK6i3x56WwIi8TGHbSGJzdCDwhDRzzkg2WDAP6U+y01Wksevi4A==
+projen@^0.79.8:
+  version "0.79.8"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.79.8.tgz#bb4a11af0b2bfb6f94a2f682a97f433844f2642e"
+  integrity sha512-upzZIccUijumfs6b0Mk9PzqyePUj7feZrnNQ+CM05Sj+h86+NbLLTWrlN79lxWs0ZByNFWok5Kpc7kCvkQtfiQ==
   dependencies:
     "@iarna/toml" "^2.2.5"
     case "^1.6.3"
