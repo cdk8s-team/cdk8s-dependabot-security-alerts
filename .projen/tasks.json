@@ -213,7 +213,7 @@
       },
       "steps": [
         {
-          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,@vercel/ncc,constructs,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,ts-jest,ts-node,@octokit/rest"
+          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=@types/jest,@vercel/ncc,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest,ts-node,@octokit/rest"
         },
         {
           "exec": "yarn install --check-files"
