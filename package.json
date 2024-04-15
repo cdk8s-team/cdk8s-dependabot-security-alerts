@@ -30,9 +30,9 @@
     "organization": false
   },
   "devDependencies": {
-    "@cdk8s/projen-common": "^0.0.515",
+    "@cdk8s/projen-common": "^0.0.516",
     "@types/jest": "^29.5.12",
-    "@types/node": "^14",
+    "@types/node": "16.18.78",
     "@typescript-eslint/eslint-plugin": "^6",
     "@typescript-eslint/parser": "^6",
     "@vercel/ncc": "^0.38.1",
