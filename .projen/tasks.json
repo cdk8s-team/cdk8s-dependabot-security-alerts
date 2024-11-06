@@ -165,7 +165,7 @@
       },
       "steps": [
         {
-          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=typescript"
+          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=typescript"
         },
         {
           "exec": "yarn install --check-files"
@@ -189,7 +189,7 @@
       },
       "steps": [
         {
-          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=projen,@cdk8s/projen-common"
+          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common"
         },
         {
           "exec": "yarn install --check-files"
@@ -213,7 +213,7 @@
       },
       "steps": [
         {
-          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=@types/jest,@vercel/ncc,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest,ts-node,@octokit/rest"
+          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,@vercel/ncc,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest,ts-node,@octokit/rest"
         },
         {
           "exec": "yarn install --check-files"
@@ -237,7 +237,7 @@
       },
       "steps": [
         {
-          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=prod,optional --filter=@octokit/rest"
+          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=prod,optional --filter=@octokit/rest"
         },
         {
           "exec": "yarn install --check-files"
