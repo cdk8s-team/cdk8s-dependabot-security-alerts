@@ -49,7 +49,7 @@
     "typescript": "^4.9.5"
   },
   "dependencies": {
-    "@octokit/rest": "^21.0.0"
+    "@octokit/rest": "^21.1.1"
   },
   "bundledDependencies": [
     "@octokit/rest"
