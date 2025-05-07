@@ -32,7 +32,7 @@ type labelType = {
   description: string;
   color: string;
   default: boolean;
-}
+};
 
 type listIssuesType = {
   labels: string[] | labelType[];
@@ -42,7 +42,7 @@ type listIssuesType = {
 type securityAdvisoryType = {
   severity: string;
   summary: string;
-}
+};
 
 type listDependabotAlertsType = {
   number: number;
