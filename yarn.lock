@@ -771,9 +771,9 @@
     "@octokit/types" "^14.0.0"
 
 "@octokit/request@^9.2.3":
-  version "9.2.3"
-  resolved "https://registry.yarnpkg.com/@octokit/request/-/request-9.2.3.tgz#00d023ad690903d952e4dd31e3f5804ef98fcd24"
-  integrity sha512-Ma+pZU8PXLOEYzsWf0cn/gY+ME57Wq8f49WTXA8FMHp2Ps9djKw//xYJ1je8Hm0pR2lU9FUGeJRWOtxq6olt4w==
+  version "9.2.4"
+  resolved "https://registry.yarnpkg.com/@octokit/request/-/request-9.2.4.tgz#037400946a30f971917f47175053c1075fac713b"
+  integrity sha512-q8ybdytBmxa6KogWlNa818r0k1wlqzNC+yNkcQDECHvQo8Vmstrg18JwqJHdJdUiHD2sjlwBgSm9kHkOKe2iyA==
   dependencies:
     "@octokit/endpoint" "^10.1.4"
     "@octokit/request-error" "^6.1.8"
