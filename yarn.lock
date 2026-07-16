@@ -1645,15 +1645,10 @@ concat-map@0.0.1:
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
   integrity sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==
 
-constructs@^10.0.0:
+constructs@^10.0.0, constructs@^10.5.0:
   version "10.7.0"
   resolved "https://registry.yarnpkg.com/constructs/-/constructs-10.7.0.tgz#bbfefab1af92931ba5325654276af272cf0c33c7"
   integrity sha512-Vzwc30bMywc7DCzX8XOyuZbsBmfXTCrn6HHmhhELZK1J5dnUWwJ5uL7hBXGGq7xFPVOOO6cs9FwaxOshAxgcWQ==
-
-constructs@^10.5.0:
-  version "10.6.0"
-  resolved "https://registry.yarnpkg.com/constructs/-/constructs-10.6.0.tgz#9ec889c48567182ed9e2a56d4335d582ba0bcb6b"
-  integrity sha512-TxHOnBO5zMo/G76ykzGF/wMpEHu257TbWiIxP9K0Yv/+t70UzgBQiTqjkAsWOPC6jW91DzJI0+ehQV6xDRNBuQ==
 
 conventional-changelog-config-spec@^2.1.0:
   version "2.1.0"
@@ -3678,10 +3673,10 @@ pretty-format@^29.0.0, pretty-format@^29.7.0:
     ansi-styles "^5.0.0"
     react-is "^18.0.0"
 
-projen@^0.101.15:
-  version "0.101.15"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.101.15.tgz#ee3d01a246a478f32fe818a05e298bd49ed71906"
-  integrity sha512-EsPU9BO8RrRuU1mEnRZwvcsAs6ok4pZ8tSTXWXaFTYYghBAL7RJLlOfvBpQbeRc0QsCM9V8NPpCvfl918MZ5dQ==
+projen@^0.101.16:
+  version "0.101.16"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.101.16.tgz#dd25753ec51a38c7e9185159ed508c2d1fa44ce2"
+  integrity sha512-vUyYtMthrcnQW4O48KgYaMfFCwi5yklkw3u3kdGQxmWKkPxfXIEhlpEfYWsGbUSp3qEuZBYsFfaj/N/e5mWbEw==
   dependencies:
     "@iarna/toml" "^2.2.5"
     case "^1.6.3"
