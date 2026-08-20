@@ -270,10 +270,10 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@cdk8s/projen-common@^0.1.16":
-  version "0.1.16"
-  resolved "https://registry.yarnpkg.com/@cdk8s/projen-common/-/projen-common-0.1.16.tgz#e194172dfe147d7bd27692550b7ca90f20bbd349"
-  integrity sha512-UGczLruSEkSRsEWbG9qzHMhEXImSnwo9sYmu47faj8zhT2CY/J/IMsGBbenvJQME4NggxkLT7s/IaHvvIR11iw==
+"@cdk8s/projen-common@^0.1.19":
+  version "0.1.19"
+  resolved "https://registry.yarnpkg.com/@cdk8s/projen-common/-/projen-common-0.1.19.tgz#f3135afb73a1bb0f7a213dd1f3ffd22702781811"
+  integrity sha512-7T6OMqrPfyqOJdSKppxB/NtjzTkzQSWOBQNFoh9KAoFMK6EfHN/0SscZWvlNlyf/06gcbduffb4p93M77Lbx1Q==
   dependencies:
     codemaker "^1.139.0"
     deepmerge "^4.3.1"
@@ -3674,10 +3674,10 @@ pretty-format@^29.0.0, pretty-format@^29.7.0:
     ansi-styles "^5.0.0"
     react-is "^18.0.0"
 
-projen@^0.101.26:
-  version "0.101.26"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.101.26.tgz#5748d4616893d57dd796c0eedb7fe32afc3415e3"
-  integrity sha512-MRrhx4r0/eaEvcsomM3Pls/06Tqbm/xl6UkEqghN1mBUyDaMxvSvgfxUE5GtJZjaizDzUM2/PkeqcvHZRDFVPw==
+projen@^0.101.33:
+  version "0.101.33"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.101.33.tgz#1ff4e4f099f105b84171c8851f07b034d2f9dd99"
+  integrity sha512-vNh8Hu7hj84XikN8781ABi7m/x487HbXBA4sBBm9fBeP38fF08pVEqMDz4sHsQpOFhsCYJc96bl2e+yG9MnmUg==
   dependencies:
     "@iarna/toml" "^2.2.5"
     case "^1.6.3"
